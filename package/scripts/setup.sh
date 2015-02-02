@@ -96,6 +96,7 @@ chown -R ldap:ldap /var/lib/ldap
 
 echo "Correcting permissions of /etc/openldap/slapd.d"
 chown -R ldap:ldap /etc/openldap/slapd.d
+chmod -R +r /etc/openldap/slapd.d
 
 echo "Importing other ldif files"
 slapadd -v -n 2 -l $LDIFF_DIR/groups.ldif
