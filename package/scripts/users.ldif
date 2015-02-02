@@ -222,12 +222,6 @@ uidNumber: 75000025
 gidNumber: 75000005
 userPassword:hortonworks
 
-irangeradmin
-75000006
-
-xapolicymgr
-
-
 dn: uid=rangeradmin,ou=Users,dc=hortonworks,dc=com
 objectclass:top
 objectclass:person
@@ -242,7 +236,6 @@ uidNumber: 75000026
 gidNumber: 75000006
 userPassword:hortonworks
 
-
 dn: uid=xapolicymgr,ou=Users,dc=hortonworks,dc=com
 objectclass:top
 objectclass:person
@@ -256,5 +249,3 @@ homedirectory:/home/xapolicymgr
 uidNumber: 75000027
 gidNumber: 75000006
 userPassword:hortonworks
-
-
