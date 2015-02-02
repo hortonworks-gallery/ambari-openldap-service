@@ -58,3 +58,6 @@ http://sandbox.hortonworks.com/ldapadmin
 
 ![Image](../master/screenshots/screenshot-error.png?raw=true)
 
+- You can also open it from within Ambari via [iFrame view](https://github.com/abajwa-hw/iframe-view)
+![Image](https://github.com/abajwa-hw/iframe-view/blob/master/screenshots/phpldap.png)
+
