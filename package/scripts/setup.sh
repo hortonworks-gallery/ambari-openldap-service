@@ -31,26 +31,28 @@ EOF
 
 service rsyslog restart
 
-cd /etc/pki/tls/certs
-echo US > input.txt
-echo California >> input.txt
-echo Palo Alto >> input.txt
-echo Hortonworks >> input.txt
-echo Sales >> input.txt
-echo sandbox >> input.txt
-echo test@test.com >> input.txt
-echo >> input.txt
 
-make slapd.pem < input.txt
-rm -f input.txt
-
-#check the cert
-openssl x509 -in slapd.pem -noout -text
-
-chmod 640 slapd.pem
-chown :ldap slapd.pem
 if [ ! -e "/etc/openldap/certs/slapd.pem" ]
 then
+	cd /etc/pki/tls/certs
+	echo US > input.txt
+	echo California >> input.txt
+	echo Palo Alto >> input.txt
+	echo Hortonworks >> input.txt
+	echo Sales >> input.txt
+	echo sandbox >> input.txt
+	echo test@test.com >> input.txt
+	echo >> input.txt
+	
+	make slapd.pem < input.txt
+	rm -f input.txt
+	
+	#check the cert
+	#openssl x509 -in slapd.pem -noout -text
+	
+	chmod 640 slapd.pem
+	chown :ldap slapd.pem
+
 	ln -s /etc/pki/tls/certs/slapd.pem /etc/openldap/certs/slapd.pem
 fi
 
@@ -61,6 +63,7 @@ chmod 600 passwd.txt
 export HASH=`slappasswd -T passwd.txt`
 rm -f passwd.txt
 
+echo "Setting up slapd.conf"
 /bin/cp -f /usr/share/openldap-servers/slapd.conf.obsolete /etc/openldap/slapd.conf
 /bin/cp -f /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
 
@@ -79,26 +82,39 @@ echo "BASE dc=$DOMAIN,dc=com" >> /etc/openldap/ldap.conf
 echo "URI ldap://localhost"  >> /etc/openldap/ldap.conf
 echo "TLS_REQCERT never" >> /etc/openldap/ldap.conf
 
+echo "Emptying LDAP"
 rm -rf /etc/openldap/slapd.d/*
+rm -rf /var/lib/ldap/*
 
 #Setup  structure
+echo "Importing base ldif files"
 sed -i "s/dc=hortonworks/dc=$DOMAIN/g" $LDIFF_DIR/*.ldif
 slapadd -v -n 2 -l $LDIFF_DIR/base.ldif 
+
+echo "Correcting permissions of /etc/openldap/slapd.d"
+chown -R ldap:ldap /var/lib/ldap
+chown -R ldap:ldap /etc/openldap/slapd.d
+chmod -R +r /etc/openldap/slapd.d
+
+echo "Importing other ldif files"
 slapadd -v -n 2 -l $LDIFF_DIR/groups.ldif
 slapadd -v -n 2 -l $LDIFF_DIR/users.ldif
 
-chown -R ldap:ldap /var/lib/ldap
-chown -R ldap:ldap /etc/openldap/slapd.d
-
+echo "Testing slapd"
 slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d
+
+echo "Setting chkconfig on for slapd"
 chkconfig --level 235 slapd on
+
+echo "Starting slapd service"
 service slapd start
 
 #yum install -y phpldapadmin
 
+echo "Updating phpldapadmin files"
 sed -i "s#Deny from all#Allow from all#g" /etc/httpd/conf.d/phpldapadmin.conf
 
 sed -i "s#^\$servers->setValue('login','attr','uid');#//\$servers->setValue('login','attr','uid');#g" /etc/phpldapadmin/config.php
 
-chkconfig httpd on
+echo "Restarting webserver"
 service httpd restart
