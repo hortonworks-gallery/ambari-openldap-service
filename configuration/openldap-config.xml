@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+ 
+<configuration>
+
+  <property>
+    <name>stack.dir</name>
+    <value>/var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap_stack</value>
+    <description>Stack dir from where to run setup/start/stop scripts</description>
+  </property>  
+  
+  <property>
+    <name>stack.log</name>
+    <value>/var/log/openldap.log</value>
+    <description>Log file for setup/start/stop scripts</description>
+  </property> 
+
+  <property>
+    <name>ldap.adminuser</name>
+    <value>admin</value>
+    <description>Admin user for LDAP</description>
+  </property> 
+
+  <property>
+    <name>ldap.domain</name>
+    <value>hortonworks</value>
+    <description>Domain for LDAP. Will be used for lapd.conf and slapd.conf </description>
+  </property> 
+
+  <property>
+    <name>ldap.ldifdir</name>
+    <value>/var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap_stack/package/scripts</value>
+    <description>Dir containing base.ldif, groups.ldif, users.ldif</description>
+  </property> 
+    
+  <property require-input="true">
+    <name>ldap.password</name>
+    <value></value>
+    <property-type>PASSWORD</property-type>
+    <description>Password for OpenLDAP</description>
+  </property> 
+ 
+
+   
+</configuration>
+
