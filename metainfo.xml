@@ -5,7 +5,7 @@
         <service>
             <name>OPENLDAP</name>
             <displayName>OpenLDAP</displayName>
-            <comment>OpenLDAP</comment>
+            <comment>OpenLDAP is the free, open source implementation of the Lightweight Directory Access Protocol (LDAP) developed by the OpenLDAP Project</comment>
             <version>1.0.0</version>
             <components>
                 <component>
