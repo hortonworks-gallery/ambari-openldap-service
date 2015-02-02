@@ -50,11 +50,11 @@ On bottom left -> Actions -> Add service -> check openLDAP server -> Next -> Nex
 
 #### Browse users
 
-- Your operating system can now recognize your LDAP users (e.g. in OpenLDAP) 
-```
-# groups ali
-ali : sales marketing hr legal finance
-# id ali
-uid=75000010(ali) gid=75000005(sales) groups=75000005(sales),75000001(marketing),75000002(hr),75000003(legal),75000004(finance)
-```
+- You can browse the groups/users in OpenLDAP using any LDAP browser like JXplorer 
+![Image](../master/screenshots/screenshot-browse-LDAP.png?raw=true)
+
+- The OpenLDAP webUI login page should come up at the below link: 
+http://sandbox.hortonworks.com/ldapadmin
+
+![Image](../master/screenshots/screenshot-error.png?raw=true)
 
