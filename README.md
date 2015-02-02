@@ -22,19 +22,19 @@ sudo service ambari restart
 ```
 - Then you can click on 'Add Service' from the 'Actions' dropdown menu in the bottom left of the Ambari dashboard:
 
-On bottom left -> Actions -> Add service -> check FreeIPA server -> Next -> Next -> Enter password -> Next -> Deploy
+On bottom left -> Actions -> Add service -> check openLDAP server -> Next -> Next -> Enter password -> Next -> Deploy
 ![Image](../master/screenshots/screenshot-vnc-config.png?raw=true)
 
-- On successful deployment you will see the FreeIPA service as part of Ambari stack and will be able to start/stop the service from here:
+- On successful deployment you will see the openLDAP service as part of Ambari stack and will be able to start/stop the service from here:
 ![Image](../master/screenshots/screenshot-vnc-stack.png?raw=true)
 
-- When you've completed the install process, FreeIPA server will appear in Ambari 
+- When you've completed the install process, openLDAP server will appear in Ambari 
 ![Image](../master/screenshots/screenshot-freeipa-stack.png?raw=true)
 
 - You can see the parameters you configured under 'Configs' tab
 ![Image](../master/screenshots/screenshot-freeipa-stack-config.png?raw=true)
 
-- To remove the FreeIPA service: 
+- To remove the openLDAP service: 
   - Stop the service via Ambari
   - Delete the service
   
