@@ -49,3 +49,9 @@ objectclass: posixgroup
 gidNumber: 75000006
 memberuid: rangeradmin
 memberuid: xapolicymgr
+
+dn: ou=kerberos,dc=hortonworks,dc=com
+ou: kerberos
+objectClass: top
+objectClass: organizationalUnit
+description: Kerberos OU to store Kerberos principals.
