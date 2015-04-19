@@ -9,6 +9,9 @@ class Master(Script):
     self.configure(env)
     import params
 
+    #Ensure the shell scripts in the services dir are executable 
+    Execute('find '+params.stack_dir+' -iname "*.sh" | xargs chmod +x')
+
     Execute('echo "Running ' + params.stack_dir + '/package/scripts/setup.sh"')
     
     # run setup script which has simple shell setup
