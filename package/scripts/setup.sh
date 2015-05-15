@@ -7,13 +7,10 @@ export LDAP_PASSWORD=$1
 export LDAP_ADMIN_USER=$2
 #"hortonworks"
 export DOMAIN=$3
-
 #"~/security-workshops/ldif"
 export LDIFF_DIR=$4
 
 echo "Starting script with password: $1 adminuser: $2 domain: $3"
-
-#yum install -y openldap-servers openldap-clients
 
 #enabled logging
 if [ ! -d "/var/log/slapd" ]
@@ -28,7 +25,6 @@ sed -i "/local4.*/d" /etc/rsyslog.conf
 cat >> /etc/rsyslog.conf << EOF
 local4.*                        /var/log/slapd/slapd.log
 EOF
-
 service rsyslog restart
 
 
@@ -57,7 +53,6 @@ then
 fi
 
 cd /root
-
 echo $LDAP_PASSWORD > passwd.txt
 chmod 600 passwd.txt
 export HASH=`slappasswd -T passwd.txt`
@@ -94,7 +89,7 @@ slapadd -v -n 2 -l $LDIFF_DIR/base.ldif
 
 echo "Importing other ldif files"
 slapadd -v -n 2 -l $LDIFF_DIR/groups.ldif
-slapadd -v -n 2 -l $LDIFF_DIR/users.ldif
+slapadd -v -n 2 -l $LDIFF_DIR/adminusers.ldif
 
 echo "Testing slapd"
 slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d
@@ -111,8 +106,6 @@ chmod -R +r /etc/openldap/slapd.d
 
 echo "Starting slapd service"
 service slapd start
-
-#yum install -y phpldapadmin
 
 echo "Updating phpldapadmin files"
 sed -i "s#Deny from all#Allow from all#g" /etc/httpd/conf.d/phpldapadmin.conf
