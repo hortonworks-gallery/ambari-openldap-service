@@ -165,6 +165,28 @@ ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/
 
 
 #
+# Add the admin user
+#
+echo -e "\n####  Adding the admin user"
+ldapadd -Q -Y EXTERNAL -H ldapi:/// <<EOF
+dn: cn=admin,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: admin
+sn: admin
+uid: admin
+homedirectory:/home/admin
+uidNumber: 75000029
+gidNumber: 75000006
+userPassword: $LDAP_PASSWORD
+description: Rootdn
+
+EOF
+
+#
 # Add the admin users and groups
 #
 echo -e "\n####  Adding the admin users and groups"
