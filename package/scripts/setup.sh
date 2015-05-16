@@ -78,13 +78,13 @@ echo "URI ldap://localhost"  >> /etc/openldap/ldap.conf
 echo "TLS_REQCERT never" >> /etc/openldap/ldap.conf
 
 echo "Emptying LDAP"
-rm -rf /etc/openldap/slapd.d/*
+#rm -rf /etc/openldap/slapd.d/*
 rm -rf /var/lib/ldap/*
 
 #Setup  structure
 echo "Importing base ldif files"
 sed -i "s/dc=hortonworks/dc=$DOMAIN/g" $LDIFF_DIR/*.ldif
-slapadd -v -n 2 -l $LDIFF_DIR/base.ldif 
+#slapadd -v -n 2 -l $LDIFF_DIR/base.ldif 
 
 
 echo "Importing other ldif files"
@@ -92,7 +92,7 @@ echo "Importing other ldif files"
 #slapadd -v -n 2 -l $LDIFF_DIR/adminusers.ldif
 
 echo "Testing slapd"
-slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d
+#slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d
 
 echo "Setting chkconfig on for slapd"
 chkconfig --level 235 slapd on
