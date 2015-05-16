@@ -24,8 +24,8 @@ cd /tmp && wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release
 #
 # Install OpenLDAP
 #
-#echo -e "\n####  Installing OpenLDAP"
-#yum install -y openldap-servers openldap-clients
+echo -e "\n####  Installing OpenLDAP"
+yum install -y openldap-servers openldap-clients
 
 
 #
@@ -198,6 +198,12 @@ ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/
 echo -e "\n####  Adding the end users and groups"
 ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/endusers.ldif
 
+
+#
+# Install phpldapadmin
+#
+echo -e "\n####  Installing phpldapadmin"
+yum install -y phpldapadmin
 
 #
 # Configure phpldapadmin
