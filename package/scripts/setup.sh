@@ -202,8 +202,8 @@ ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/
 #
 # Install phpldapadmin
 #
-#echo -e "\n####  Installing phpldapadmin"
-#yum install -y phpldapadmin
+echo -e "\n####  Installing phpldapadmin"
+yum install -y phpldapadmin
 
 #
 # Configure phpldapadmin

@@ -26,7 +26,6 @@
                 <packages>
                    <package><name>openldap-servers</name></package>  
                    <package><name>openldap-clients</name></package>  
-                   <package><name>phpldapadmin</name></package>            
                    <package><name>krb5-server-ldap</name></package>                           
                 </packages>
               </osSpecific>
