@@ -111,6 +111,7 @@ EOF
 #
 # Set the config obj admin password
 #
+echo -e "\n####  Setting the config obj admin password"
 ldapmodify -Q -Y EXTERNAL -H ldapi:/// <<EOF
 dn: olcDatabase={0}config,cn=config
 changetype: modify
