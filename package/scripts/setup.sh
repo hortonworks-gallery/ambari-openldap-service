@@ -215,5 +215,6 @@ sed -i "s#^\$servers->setValue('login','attr','uid');#//\$servers->setValue('log
 #
 # Start httpd on boot
 #
-echo -e "\n####  Enabling httpd to start on boot"
+echo -e "\n####  Starting and enabling httpd to start on boot"
 chkconfig --level 2345 httpd on
+service httpd start
