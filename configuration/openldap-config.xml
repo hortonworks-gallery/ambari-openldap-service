@@ -23,7 +23,7 @@
 
   <property>
     <name>ldap.domain</name>
-    <value>hortonworks</value>
+    <value>dc=hortonworks,dc=com</value>
     <description>Domain for LDAP. Will be used for lapd.conf and slapd.conf </description>
   </property> 
 
