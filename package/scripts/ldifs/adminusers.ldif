@@ -1,0 +1,56 @@
+dn: uid=rangeradmin,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: Ranger
+sn: Admin
+uid: rangeradmin
+homedirectory:/home/rangeradmin
+uidNumber: 75000026
+gidNumber: 75000006
+userPassword:hortonworks
+
+dn: uid=xapolicymgr,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: XAPolicy
+sn: Manager
+uid: xapolicymgr
+homedirectory:/home/xapolicymgr
+uidNumber: 75000027
+gidNumber: 75000006
+userPassword:hortonworks
+
+dn: cn=admin,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: admin
+sn: admin
+uid: admin
+homedirectory:/home/admin
+uidNumber: 75000029
+gidNumber: 75000006
+userPassword:hortonworks
+description: Rootdn
+
+dn: cn=admins,ou=Groups,dc=hortonworks,dc=com
+cn: admins
+objectclass: posixgroup
+gidNumber: 75000006
+memberuid: rangeradmin
+memberuid: xapolicymgr
+
+dn: ou=kerberos,dc=hortonworks,dc=com
+ou: kerberos
+objectClass: top
+objectClass: organizationalUnit
+description: Kerberos OU to store Kerberos principals.
+

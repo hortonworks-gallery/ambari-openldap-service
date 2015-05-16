@@ -1,0 +1,38 @@
+dn: uid=shane,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: shane
+sn: Shane
+uid: shane
+homedirectory:/home/shane
+uidNumber: 75000011
+gidNumber: 75000011
+userPassword:shane
+
+dn: cn=it,ou=Groups,dc=hortonworks,dc=com
+cn: it
+objectclass: groupofnames
+member: uid=shane,ou=Users,dc=hortonworks,dc=com
+
+dn: uid=mac,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: mac
+sn: Mac
+uid: mac
+homedirectory:/home/mac
+uidNumber: 75000012
+gidNumber: 75000012
+userPassword:mac
+
+dn: cn=sales,ou=Groups,dc=hortonworks,dc=com
+cn: sales
+objectclass: groupofnames
+member: uid=mac,ou=Users,dc=hortonworks,dc=com
+

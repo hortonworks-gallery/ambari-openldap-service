@@ -29,7 +29,7 @@
 
   <property>
     <name>ldap.ldifdir</name>
-    <value>/var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap-stack/package/scripts</value>
+    <value>/var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap-stack/package/scripts/ldifs</value>
     <description>Dir containing ldif files to populate OpenLDAP with (must contain these 3 files: base.ldif, groups.ldif, users.ldif)</description>
   </property> 
     
