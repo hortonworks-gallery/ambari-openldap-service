@@ -88,8 +88,8 @@ slapadd -v -n 2 -l $LDIFF_DIR/base.ldif
 
 
 echo "Importing other ldif files"
-slapadd -v -n 2 -l $LDIFF_DIR/groups.ldif
-slapadd -v -n 2 -l $LDIFF_DIR/adminusers.ldif
+#slapadd -v -n 2 -l $LDIFF_DIR/groups.ldif
+#slapadd -v -n 2 -l $LDIFF_DIR/adminusers.ldif
 
 echo "Testing slapd"
 slaptest -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d
