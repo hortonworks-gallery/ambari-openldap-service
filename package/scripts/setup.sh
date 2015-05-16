@@ -24,8 +24,15 @@ cd /tmp && wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release
 #
 # Install OpenLDAP
 #
-echo -e "\n####  Installing OpenLDAP"
-yum install -y openldap-servers openldap-clients
+#echo -e "\n####  Installing OpenLDAP"
+#yum install -y openldap-servers openldap-clients
+
+
+#
+# Start slapd on boot
+#
+echo -e "\n####  Enabling slapd to start on boot"
+chkconfig --level 2345 slapd on
 
 
 #
@@ -169,3 +176,16 @@ ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/
 echo -e "\n####  Adding the end users and groups"
 ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/endusers.ldif
 
+
+#
+# Configure phpldapadmin
+#
+echo -e "\n####  Configuring phpldapadmin"
+sed -i "s#Deny from all#Allow from all#g" /etc/httpd/conf.d/phpldapadmin.conf
+sed -i "s#^\$servers->setValue('login','attr','uid');#//\$servers->setValue('login','attr','uid');#g" /etc/phpldapadmin/config.php
+
+#
+# Start httpd on boot
+#
+echo -e "\n####  Enabling httpd to start on boot"
+chkconfig --level 2345 httpd on
