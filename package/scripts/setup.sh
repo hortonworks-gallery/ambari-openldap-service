@@ -129,6 +129,12 @@ EOF
 echo -e "\n####  Enabling ldaps at start"
 sed -i 's|^SLAPD_LDAPS.*|SLAPD_LDAPS=yes|g' /etc/sysconfig/ldap
 
+# disable client cert validation
+echo -e "\n####  Disabling client cert validation"
+if ! grep -q TLS_REQCERT /etc/openldap/ldap.conf; then
+    echo "TLS_REQCERT     allow" >> /etc/openldap/ldap.conf
+fi
+
 
 #
 # Restart slapd
