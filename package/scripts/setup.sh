@@ -105,15 +105,21 @@ cp /etc/pki/tls/certs/slapd.pem /etc/openldap/certs/
 echo -e "\n####  Setting the certificate paths"
 ldapmodify -Q -Y EXTERNAL -H ldapi:/// <<EOF
 dn: cn=config
-changetype: modify
-replace: olcTLSCertificateKeyFile
-olcTLSCertificateKeyFile: /etc/openldap/certs/slapd.pem
+changetype:  modify
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/openldap/certs/slapd.crt
 -
-replace: olcTLSCertificateFile
-olcTLSCertificateFile: /etc/pki/tls/certs/ca-bundle.crt
+add: olcTLSCACertificatePath
+olcTLSCACertificatePath: /etc/openldap/certs
 -
-replace: olcTLSCACertificateFile
-olcTLSCACertificateFile: /etc/pki/tls/certs/ca-bundle.crt
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/openldap/certs/slapd.crt
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/openldap/certs/slapd.key
+-
+add: olcTLSCipherSuite
+olcTLSCipherSuite: HIGH:MEDIUM:+SSLv2
 
 EOF
 
