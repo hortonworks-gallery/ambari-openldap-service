@@ -121,6 +121,14 @@ EOF
 echo -e "\n####  Enabling ldaps at start"
 sed -i 's|^SLAPD_LDAPS|SLAPD_LDAPS=yes|g' /etc/syconfig/ldap
 
+
+#
+# Restart slapd
+#
+echo -e "\n####  Restarting slapd"
+service slapd restart
+
+
 #
 # Set the domain suffix
 #
