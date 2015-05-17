@@ -208,24 +208,18 @@ cn: admin
 sn: admin
 uid: admin
 homedirectory:/home/admin
-uidNumber: 75000029
-gidNumber: 75000006
+uidNumber: 75000001
+gidNumber: 75000001
 userPassword: $LDAP_PASSWORD
 description: Rootdn
 
 EOF
 
 #
-# Add the admin users and groups
+# Add the users and groups
 #
 echo -e "\n####  Adding the admin users and groups"
-ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/adminusers.ldif
-
-#
-# Add the end users and groups
-#
-echo -e "\n####  Adding the end users and groups"
-ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/endusers.ldif
+ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/user_group.ldif
 
 
 #

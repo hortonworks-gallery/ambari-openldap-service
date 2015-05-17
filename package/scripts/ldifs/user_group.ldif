@@ -1,0 +1,87 @@
+dn: ou=kerberos,dc=hortonworks,dc=com
+ou: kerberos
+objectClass: top
+objectClass: organizationalUnit
+description: Kerberos OU to store Kerberos principals.
+
+dn: uid=rangeradmin,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: Ranger
+sn: Admin
+uid: rangeradmin
+homedirectory:/home/rangeradmin
+uidNumber: 75000002
+gidNumber: 75000001
+userPassword:hortonworks
+
+dn: uid=xapolicymgr,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: XAPolicy
+sn: Manager
+uid: xapolicymgr
+homedirectory:/home/xapolicymgr
+uidNumber: 75000003
+gidNumber: 75000001
+userPassword:hortonworks
+
+dn: cn=admins,ou=Groups,dc=hortonworks,dc=com
+cn: admins
+objectclass: top
+objectclass: posixgroup
+objectclass: groupOfNames
+gidNumber: 75000001
+member: uid=rangeradmin,ou=Users,dc=hortonworks,dc=com
+member: uid=xapolicymgr,ou=Users,dc=hortonworks,dc=com
+
+dn: uid=shane,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: shane
+sn: Shane
+uid: shane
+homedirectory:/home/shane
+uidNumber: 75000010
+gidNumber: 75000010
+userPassword:shane
+
+dn: cn=it,ou=Groups,dc=hortonworks,dc=com
+cn: it
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000010
+member: uid=shane,ou=Users,dc=hortonworks,dc=com
+
+dn: uid=mac,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: mac
+sn: Mac
+uid: mac
+homedirectory:/home/mac
+uidNumber: 75000011
+gidNumber: 75000011
+userPassword:mac
+
+dn: cn=sales,ou=Groups,dc=hortonworks,dc=com
+cn: sales
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000011
+member: uid=mac,ou=Users,dc=hortonworks,dc=com
+
