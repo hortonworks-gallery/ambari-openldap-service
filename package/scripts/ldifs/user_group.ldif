@@ -4,43 +4,6 @@ objectClass: top
 objectClass: organizationalUnit
 description: Kerberos OU to store Kerberos principals.
 
-dn: uid=rangeradmin,ou=Users,dc=hortonworks,dc=com
-objectclass:top
-objectclass:person
-objectclass:organizationalPerson
-objectclass:inetOrgPerson
-objectclass:posixaccount
-cn: Ranger
-sn: Admin
-uid: rangeradmin
-homedirectory:/home/rangeradmin
-uidNumber: 75000002
-gidNumber: 75000001
-userPassword:hortonworks
-
-dn: uid=xapolicymgr,ou=Users,dc=hortonworks,dc=com
-objectclass:top
-objectclass:person
-objectclass:organizationalPerson
-objectclass:inetOrgPerson
-objectclass:posixaccount
-cn: XAPolicy
-sn: Manager
-uid: xapolicymgr
-homedirectory:/home/xapolicymgr
-uidNumber: 75000003
-gidNumber: 75000001
-userPassword:hortonworks
-
-dn: cn=admins,ou=Groups,dc=hortonworks,dc=com
-cn: admins
-objectclass: top
-objectclass: posixgroup
-objectclass: groupOfNames
-gidNumber: 75000001
-member: uid=rangeradmin,ou=Users,dc=hortonworks,dc=com
-member: uid=xapolicymgr,ou=Users,dc=hortonworks,dc=com
-
 dn: uid=shane,ou=Users,dc=hortonworks,dc=com
 objectclass:top
 objectclass:person
