@@ -27,12 +27,6 @@ echo -e "\n####  Installing the EPEL repo"
 cd /tmp && wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm && rpm -ivh epel-release-6-8.noarch.rpm
 
 
-#
-# Install OpenLDAP
-#
-echo -e "\n####  Installing OpenLDAP"
-yum install -y openldap-servers openldap-clients
-
 
 #
 # Start slapd on boot

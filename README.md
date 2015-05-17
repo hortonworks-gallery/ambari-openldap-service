@@ -17,9 +17,8 @@ ssh root@sandbox.hortonworks.com
 - To deploy the OpenLDAP stack, run below
 ```
 cd /var/lib/ambari-server/resources/stacks/HDP/2.2/services
-git clone https://github.com/sakserv/openldap-stack.git   
-cd openladp-stack && git checkout memberof
-sudo service ambari restart
+git clone https://github.com/abajwa-hw/openldap-stack.git   
+sudo service ambari-server restart
 ```
 - To customize the default users/groups, you can copy the base.ldif/groups.ldif/users.ldif files from ```/var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap-stack/package/scripts``` dir of ambari server into any dir (e.g. /root) and make your changes (e.g. replace ali user with tom user). In Ambari add services wizard below when you get to configuration page, just point ldap.ldifdir property to this directory. 
 
