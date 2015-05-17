@@ -97,10 +97,12 @@ service slapd start
 #
 # Set the SSL certificate
 #
-echo -e "\n####  Created the SSL certificate"
+echo -e "\n####  Creating the SSL certificate"
 SSL_DIR=$SCRIPT_DIR/ssl
-cd /etc/pki/tls/certs && make slapd.pem < $SSL_DIR/input.txt
-cp /etc/pki/tls/certs/slapd.pem /etc/openldap/certs/
+SSL_CONF_DIR=/etc/openldap/certs/
+openssl genrsa -out $SSL_CONF_DIR/slapd.key 2048 
+openssl req -new -x509 -key $SSL_CONF_DIR/slapd.key -out $SSL_CONF_DIR/slapd.crt -days 1095 < $SSL_DIR/input.txt
+
 
 echo -e "\n####  Setting the certificate paths"
 ldapmodify -Q -Y EXTERNAL -H ldapi:/// <<EOF
