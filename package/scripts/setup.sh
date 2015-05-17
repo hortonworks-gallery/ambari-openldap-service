@@ -57,31 +57,19 @@ local4.*                        /var/log/slapd/slapd.log
 EOF
 service rsyslog restart
 
-#
-# Copy DB_CONFIG and fix ownership
-#
-echo -e "\n####  Copying DB_CONFIG and fixing ownership"
-cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
-chown -R ldap:ldap /var/lib/ldap /etc/openldap
-
 
 #
 # Convert to rfc2307bis schema
 #
 echo -e "\n####  Converting to the rfc2307bis schema to support posixGroup and groupOfNames"
-SCHEMA_TMP_DIR=/tmp/rfc2307bis_convert
 SCHEMA_CONF_DIR=$SCRIPT_DIR/rfc2307bis
-if [ -d "$SCHEMA_TMP_DIR" ]; then
-    rm -rf $SCHEMA_TMP_DIR
-fi
-mkdir -p $SCHEMA_TMP_DIR
 
 # Copy the schema and fix ownership
 cp $SCHEMA_CONF_DIR/rfc2307bis.schema /etc/openldap/schema/
 chown -R ldap:ldap /var/lib/ldap /etc/openldap
 
 # Remove existing config database and database files
-rm -rf /etc/openldap/slap.d/*
+rm -rf /etc/openldap/slapd.d/*
 rm -rf /var/lib/ldap/*
 
 # Apply the nis stripped config
@@ -90,9 +78,13 @@ slapadd -F /etc/openldap/slapd.d/ -n 0 -l $SCHEMA_CONF_DIR/nis_remove.ldif
 # Apply the rfc2307bis config
 slapadd -F /etc/openldap/slapd.d/ -n 0 -l $SCHEMA_CONF_DIR/rfc2307bis.ldif
 
-# Fix ownership
-chown -R ldap:ldap /var/lib/ldap /etc/openldap
 
+#
+# Copy DB_CONFIG and fix ownership
+#
+echo -e "\n####  Copying DB_CONFIG and fixing ownership"
+cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+chown -R ldap:ldap /var/lib/ldap /etc/openldap
 
 
 #
