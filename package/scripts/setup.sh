@@ -1,6 +1,12 @@
 #!/bin/bash
 
 #
+# Set script vars
+#
+SCRIPT_NAME=$(basename $0)
+SCRIPT_DIR=`cd $(dirname $0) && pwd`
+
+#
 # Parse the args
 #
 LDAP_PASSWORD="$1"
@@ -24,8 +30,8 @@ cd /tmp && wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release
 #
 # Install OpenLDAP
 #
-#echo -e "\n####  Installing OpenLDAP"
-#yum install -y openldap-servers openldap-clients
+echo -e "\n####  Installing OpenLDAP"
+yum install -y openldap-servers openldap-clients
 
 
 #
@@ -60,10 +66,41 @@ chown -R ldap:ldap /var/lib/ldap /etc/openldap
 
 
 #
+# Convert to rfc2307bis schema
+#
+echo -e "\n####  Converting to the rfc2307bis schema to support posixGroup and groupOfNames"
+SCHEMA_TMP_DIR=/tmp/rfc2307bis_convert
+SCHEMA_CONF_DIR=$SCRIPT_DIR/rfc2307bis
+if [ -d "$SCHEMA_TMP_DIR" ]; then
+    rm -rf $SCHEMA_TMP_DIR
+fi
+mkdir -p $SCHEMA_TMP_DIR
+
+# Copy the schema and fix ownership
+cp $SCHEMA_CONF_DIR/rfc2307bis.schema /etc/openldap/schema/
+chown -R ldap:ldap /var/lib/ldap /etc/openldap
+
+# Remove existing config database and database files
+rm -rf /etc/openldap/slap.d/*
+rm -rf /var/lib/ldap/*
+
+# Apply the nis stripped config
+slapadd -F /etc/openldap/slapd.d/ -n 0 -l $SCHEMA_CONF_DIR/nis_remove.ldif
+
+# Apply the rfc2307bis config
+slapadd -F /etc/openldap/slapd.d/ -n 0 -l $SCHEMA_CONF_DIR/rfc2307bis.ldif
+
+# Fix ownership
+chown -R ldap:ldap /var/lib/ldap /etc/openldap
+
+
+
+#
 # Start slapd
 #
 echo -e "\n####  Starting slapd"
 service slapd start
+
 
 
 #
