@@ -99,7 +99,8 @@ service slapd start
 #
 echo -e "\n####  Created the SSL certificate"
 SSL_DIR=$SCRIPT_DIR/ssl
-cd /etc/pki/tls/certs && make /etc/openldap/certs/slapd.pem < $SSL_DIR/input.txt
+cd /etc/pki/tls/certs && make slapd.pem < $SSL_DIR/input.txt
+cp /etc/pki/tls/certs/slapd.pem /etc/openldap/certs/
 
 echo -e "\n####  Setting the certificate paths"
 ldapmodify -Q -Y EXTERNAL -H ldapi:/// <<EOF
@@ -113,20 +114,12 @@ olcTLSCertificateFile: /etc/pki/tls/certs/ca-bundle.crt
 -
 replace: olcTLSCACertificateFile
 olcTLSCACertificateFile: /etc/pki/tls/certs/ca-bundle.crt
--
-replace: olcTLSCACertificatePath
-olcTLSCACertificatePath: /etc/pki/tls/certs
--
-replace: olcTLSCipherSuite 
-olcTLSCipherSuite: TLSV1+RSA:!NULL
--
-replace: olcTLSCRLCheck 
-olcTLSCRLCheck: none
--
-replace: olcTLSVerifyClient
-olcTLSVerifyClient: never
 
 EOF
+
+# enable LDAPS
+echo -e "\n####  Enabling ldaps at start"
+sed -i 's|^SLAPD_LDAPS|SLAPD_LDAPS=yes|g' /etc/syconfig/ldap
 
 #
 # Set the domain suffix
