@@ -119,7 +119,7 @@ EOF
 
 # enable LDAPS
 echo -e "\n####  Enabling ldaps at start"
-sed -i 's|^SLAPD_LDAPS|SLAPD_LDAPS=yes|g' /etc/syconfig/ldap
+sed -i 's|^SLAPD_LDAPS|SLAPD_LDAPS=yes|g' /etc/sysconfig/ldap
 
 
 #
