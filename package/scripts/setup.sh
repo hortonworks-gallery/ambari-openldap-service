@@ -229,6 +229,13 @@ service slapd start
 
 
 #
+# Setup ldif files
+#
+echo -e "\n####  Set domain in ldif files to $LDAP_DOMAIN"
+sed -i "s/dc=hortonworks,dc=com/$LDAP_DOMAIN/g" $LDAP_LDIF_DIR/*.ldif
+
+
+#
 # Add the base ou's
 #
 echo -e "\n####  Adding the base OU's"
