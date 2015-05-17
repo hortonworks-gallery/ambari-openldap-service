@@ -94,6 +94,39 @@ echo -e "\n####  Starting slapd"
 service slapd start
 
 
+#
+# Set the SSL certificate
+#
+echo -e "\n####  Created the SSL certificate"
+SSL_DIR=$SCRIPT_DIR/ssl
+cd /etc/pki/tls/certs && make /etc/openldap/certs/slapd.pem < $SSL_DIR/input.txt
+
+echo -e "\n####  Setting the certificate paths"
+ldapmodify -Q -Y EXTERNAL -H ldapi:/// <<EOF
+dn: cn=config
+changetype: modify
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/openldap/certs/slapd.pem
+-
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/pki/tls/certs/ca-bundle.crt
+-
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/pki/tls/certs/ca-bundle.crt
+-
+replace: olcTLSCACertificatePath
+olcTLSCACertificatePath: /etc/pki/tls/certs
+-
+replace: olcTLSCipherSuite 
+olcTLSCipherSuite: TLSV1+RSA:!NULL
+-
+replace: olcTLSCRLCheck 
+olcTLSCRLCheck: none
+-
+replace: olcTLSVerifyClient
+olcTLSVerifyClient: never
+
+EOF
 
 #
 # Set the domain suffix
