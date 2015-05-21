@@ -265,10 +265,16 @@ description: Rootdn
 EOF
 
 #
-# Add the users and groups
+# Add the users first
 #
-echo -e "\n####  Adding the admin users and groups"
-ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/user_group.ldif
+echo -e "\n####  Adding the users"
+ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/users.ldif
+
+#
+# Add the groups
+#
+echo -e "\n####  Adding the users"
+ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/groups.ldif
 
 
 #
