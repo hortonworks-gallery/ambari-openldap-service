@@ -1,6 +1,8 @@
 dn: cn=marketing,ou=Groups,dc=hortonworks,dc=com
 cn: marketing
-objectclass: posixgroup
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
 gidNumber: 75000010
 member: mktg1,ou=Users,dc=hortonworks,dc=com
 member: mktg2,ou=Users,dc=hortonworks,dc=com
@@ -10,7 +12,9 @@ member: mac,ou=Users,dc=hortonworks,dc=com
 
 dn: cn=hr,ou=Groups,dc=hortonworks,dc=com
 cn: hr
-objectclass: posixgroup
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
 gidNumber: 75000011
 member: hr1,ou=Users,dc=hortonworks,dc=com
 member: hr2,ou=Users,dc=hortonworks,dc=com
@@ -19,7 +23,9 @@ member: ali,ou=Users,dc=hortonworks,dc=com
 
 dn: cn=legal,ou=Groups,dc=hortonworks,dc=com
 cn: legal
-objectclass: posixgroup
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
 gidNumber: 75000012
 member: legal1,ou=Users,dc=hortonworks,dc=com
 member: legal2,ou=Users,dc=hortonworks,dc=com
@@ -28,7 +34,9 @@ member: ali,ou=Users,dc=hortonworks,dc=com
 
 dn: cn=finance,ou=Groups,dc=hortonworks,dc=com
 cn: finance
-objectclass: posixgroup
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
 gidNumber: 75000013
 member: finance1,ou=Users,dc=hortonworks,dc=com
 member: finance2,ou=Users,dc=hortonworks,dc=com
@@ -37,7 +45,9 @@ member: ali,ou=Users,dc=hortonworks,dc=com
 
 dn: cn=sales,ou=Groups,dc=hortonworks,dc=com
 cn: sales
-objectclass: posixgroup
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
 gidNumber: 75000014
 member: sales1,ou=Users,dc=hortonworks,dc=com
 member: sales2,ou=Users,dc=hortonworks,dc=com
