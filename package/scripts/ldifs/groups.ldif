@@ -1,0 +1,57 @@
+dn: cn=marketing,ou=Groups,dc=hortonworks,dc=com
+cn: marketing
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000010
+member: uid=mktg1,ou=Users,dc=hortonworks,dc=com
+member: uid=mktg2,ou=Users,dc=hortonworks,dc=com
+member: uid=mktg3,ou=Users,dc=hortonworks,dc=com
+member: uid=ali,ou=Users,dc=hortonworks,dc=com
+member: uid=mac,ou=Users,dc=hortonworks,dc=com
+
+dn: cn=hr,ou=Groups,dc=hortonworks,dc=com
+cn: hr
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000011
+member: uid=hr1,ou=Users,dc=hortonworks,dc=com
+member: uid=hr2,ou=Users,dc=hortonworks,dc=com
+member: uid=hr3,ou=Users,dc=hortonworks,dc=com
+member: uid=ali,ou=Users,dc=hortonworks,dc=com
+
+dn: cn=legal,ou=Groups,dc=hortonworks,dc=com
+cn: legal
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000012
+member: uid=legal1,ou=Users,dc=hortonworks,dc=com
+member: uid=legal2,ou=Users,dc=hortonworks,dc=com
+member: uid=legal3,ou=Users,dc=hortonworks,dc=com
+member: uid=ali,ou=Users,dc=hortonworks,dc=com
+
+dn: cn=finance,ou=Groups,dc=hortonworks,dc=com
+cn: finance
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000013
+member: uid=finance1,ou=Users,dc=hortonworks,dc=com
+member: uid=finance2,ou=Users,dc=hortonworks,dc=com
+member: uid=finance3,ou=Users,dc=hortonworks,dc=com
+member: uid=ali,ou=Users,dc=hortonworks,dc=com
+
+dn: cn=sales,ou=Groups,dc=hortonworks,dc=com
+cn: sales
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000014
+member: uid=sales1,ou=Users,dc=hortonworks,dc=com
+member: uid=sales2,ou=Users,dc=hortonworks,dc=com
+member: uid=sales3,ou=Users,dc=hortonworks,dc=com
+member: uid=ali,ou=Users,dc=hortonworks,dc=com
+member: uid=shane,ou=Users,dc=hortonworks,dc=com
+
