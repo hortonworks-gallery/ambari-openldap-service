@@ -9,11 +9,6 @@ member: uid=mktg2,ou=Users,dc=hortonworks,dc=com
 member: uid=mktg3,ou=Users,dc=hortonworks,dc=com
 member: uid=ali,ou=Users,dc=hortonworks,dc=com
 member: uid=mac,ou=Users,dc=hortonworks,dc=com
-memberUid: mktg1
-memberUid: mktg2
-memberUid: mktg3
-memberUid: ali
-memberUid: mac
 
 dn: cn=hr,ou=Groups,dc=hortonworks,dc=com
 cn: hr
@@ -25,10 +20,6 @@ member: uid=hr1,ou=Users,dc=hortonworks,dc=com
 member: uid=hr2,ou=Users,dc=hortonworks,dc=com
 member: uid=hr3,ou=Users,dc=hortonworks,dc=com
 member: uid=ali,ou=Users,dc=hortonworks,dc=com
-memberUid: hr1
-memberUid: hr2
-memberUid: hr3
-memberUid: ali
 
 dn: cn=legal,ou=Groups,dc=hortonworks,dc=com
 cn: legal
@@ -40,10 +31,6 @@ member: uid=legal1,ou=Users,dc=hortonworks,dc=com
 member: uid=legal2,ou=Users,dc=hortonworks,dc=com
 member: uid=legal3,ou=Users,dc=hortonworks,dc=com
 member: uid=ali,ou=Users,dc=hortonworks,dc=com
-memberUid: legal1
-memberUid: legal2
-memberUid: legal3
-memberUid: ali
 
 dn: cn=finance,ou=Groups,dc=hortonworks,dc=com
 cn: finance
@@ -55,10 +42,6 @@ member: uid=finance1,ou=Users,dc=hortonworks,dc=com
 member: uid=finance2,ou=Users,dc=hortonworks,dc=com
 member: uid=finance3,ou=Users,dc=hortonworks,dc=com
 member: uid=ali,ou=Users,dc=hortonworks,dc=com
-memberUid: finance1
-memberUid: finance2
-memberUid: finance3
-memberUid: ali
 
 dn: cn=sales,ou=Groups,dc=hortonworks,dc=com
 cn: sales
@@ -71,11 +54,6 @@ member: uid=sales2,ou=Users,dc=hortonworks,dc=com
 member: uid=sales3,ou=Users,dc=hortonworks,dc=com
 member: uid=ali,ou=Users,dc=hortonworks,dc=com
 member: uid=shane,ou=Users,dc=hortonworks,dc=com
-memberUid: sales1
-memberUid: sales2
-memberUid: sales3
-memberUid: ali
-memberUid: shane
 
 dn: cn=admins,ou=Groups,dc=hortonworks,dc=com
 cn: admins
@@ -88,9 +66,4 @@ member: uid=hiveuser,ou=Users,dc=hortonworks,dc=com
 member: uid=hbaseuser,ou=Users,dc=hortonworks,dc=com
 member: uid=knoxuser,ou=Users,dc=hortonworks,dc=com
 member: uid=stormuser,ou=Users,dc=hortonworks,dc=com
-memberUid: hdfsuser
-memberUid: hiveuser
-memberUid: hbaseuser
-memberUid: knoxuser
-memberUid: stormuser
 
