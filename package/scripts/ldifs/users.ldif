@@ -250,3 +250,87 @@ uidNumber: 75000027
 gidNumber: 75000014
 userPassword:mac
 
+
+dn: uid=hdfsuser,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: hdfsuser
+sn: hdfsuser
+uid: hdfsuser
+homedirectory:/home/hdfsuser
+uidNumber: 75000028
+gidNumber: 75000015
+userPassword:hortonworks1
+
+dn: uid=hiveuser,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: hiveuser
+sn: hiveuser
+uid: hiveuser
+homedirectory:/home/hiveuser
+uidNumber: 75000029
+gidNumber: 75000015
+userPassword:hortonworks1
+
+dn: uid=hbaseuser,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: hbaseuser
+sn: hbaseuser
+uid: hbaseuser
+homedirectory:/home/hbaseuser
+uidNumber: 75000030
+gidNumber: 75000015
+userPassword:hortonworks1
+
+dn: uid=knoxuser,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: knoxuser
+sn: knoxuser
+uid: knoxuser
+homedirectory:/home/knoxuser
+uidNumber: 75000031
+gidNumber: 75000015
+userPassword:hortonworks1
+
+dn: uid=stormuser,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: stormuser
+sn: stormuser
+uid: stormuser
+homedirectory:/home/stormuser
+uidNumber: 75000032
+gidNumber: 75000015
+userPassword:hortonworks1
+
+dn: uid=admin,ou=Users,dc=hortonworks,dc=com
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+objectclass:posixaccount
+cn: admin
+sn: admin
+uid: admin
+homedirectory:/home/admin
+uidNumber: 75000033
+gidNumber: 75000015
+userPassword:admin

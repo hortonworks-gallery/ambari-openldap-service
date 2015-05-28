@@ -54,4 +54,26 @@ member: uid=sales2,ou=Users,dc=hortonworks,dc=com
 member: uid=sales3,ou=Users,dc=hortonworks,dc=com
 member: uid=ali,ou=Users,dc=hortonworks,dc=com
 member: uid=shane,ou=Users,dc=hortonworks,dc=com
+memberUid: sales1
+memberUid: sales2
+memberUid: sales3
+memberUid: ali
+memberUid: shane
+
+dn: cn=admins,ou=Groups,dc=hortonworks,dc=com
+cn: admins
+objectclass: top
+objectclass: posixGroup
+objectclass: groupofnames
+gidNumber: 75000015
+member: uid=hdfsuser,ou=Users,dc=hortonworks,dc=com
+member: uid=hiveuser,ou=Users,dc=hortonworks,dc=com
+member: uid=hbaseuser,ou=Users,dc=hortonworks,dc=com
+member: uid=knoxuser,ou=Users,dc=hortonworks,dc=com
+member: uid=stormuser,ou=Users,dc=hortonworks,dc=com
+memberUid: hdfsuser
+memberUid: hiveuser
+memberUid: hbaseuser
+memberUid: knoxuser
+memberUid: stormuser
 
