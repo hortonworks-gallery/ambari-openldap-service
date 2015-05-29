@@ -40,7 +40,7 @@ On bottom left -> Actions -> Add service -> check openLDAP server -> Next -> Nex
 ```
 export SERVICE=OPENLDAP
 export PASSWORD=admin
-export AMBARI_HOST=sandbox.hortonworks.com
+export AMBARI_HOST=localhost
 export CLUSTER=Sandbox
 
 #get service status
@@ -54,14 +54,6 @@ curl -u admin:$PASSWORD -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo"
 ```
 
 
-- To remove the openLDAP service: 
-  - Stop the service via Ambari
-  - Delete the service
-  
-    ```
-    curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/OPENLDAP
-    ```
-
 
 #### Browse users
 
@@ -74,3 +66,16 @@ http://sandbox.hortonworks.com/ldapadmin
 - You can also open it from within Ambari via [iFrame view](https://github.com/abajwa-hw/iframe-view)
 ![Image](https://github.com/abajwa-hw/iframe-view/blob/master/screenshots/phpldap.png)
 
+#### Remove service
+
+- To remove the openLDAP service: 
+  - Stop the service via Ambari
+  - Delete the service
+  
+    ```
+export SERVICE=OPENLDAP
+export PASSWORD=admin
+export AMBARI_HOST=localhost
+export CLUSTER=Sandbox    
+curl -u admin:$PASSWORD -i -H 'X-Requested-By: ambari' -X DELETE http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/OPENLDAP
+    ```
