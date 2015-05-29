@@ -321,16 +321,3 @@ uidNumber: 75000032
 gidNumber: 75000015
 userPassword:hortonworks1
 
-dn: uid=admin,ou=Users,dc=hortonworks,dc=com
-objectclass:top
-objectclass:person
-objectclass:organizationalPerson
-objectclass:inetOrgPerson
-objectclass:posixaccount
-cn: admin
-sn: admin
-uid: admin
-homedirectory:/home/admin
-uidNumber: 75000033
-gidNumber: 75000015
-userPassword:admin
