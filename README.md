@@ -61,11 +61,6 @@ curl -u admin:$PASSWORD -i -H 'X-Requested-By: ambari' -X PUT -d '{"RequestInfo"
     ```
     curl -u admin:admin -i -H 'X-Requested-By: ambari' -X DELETE http://sandbox.hortonworks.com:8080/api/v1/clusters/Sandbox/services/OPENLDAP
     ```
-  - Remove artifacts 
-  
-    ```
-    /var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap-stack/remove.sh
-    ```
 
 
 #### Browse users
