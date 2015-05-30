@@ -247,7 +247,7 @@ ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/
 #
 echo -e "\n####  Adding the admin user"
 ldapadd -D "cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN" -h 127.0.0.1 -w $LDAP_PASSWORD <<EOF
-dn: cn=admin,dc=hortonworks,dc=com
+dn: cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN
 objectclass:top
 objectclass:person
 objectclass:organizationalPerson
