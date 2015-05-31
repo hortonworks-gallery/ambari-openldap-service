@@ -5,7 +5,7 @@ from resource_management import *
 # server configurations
 config = Script.get_config()
 
-stack_dir = config['configurations']['openldap-config']['stack.dir']
+#stack_dir = config['configurations']['openldap-config']['stack.dir']
 
 stack_log = config['configurations']['openldap-config']['stack.log']
 
@@ -17,3 +17,4 @@ ldap_password = config['configurations']['openldap-config']['ldap.password']
 
 ldap_ldifdir = config['configurations']['openldap-config']['ldap.ldifdir']
 
+ldap_ou = config['configurations']['openldap-config']['ldap.ou']

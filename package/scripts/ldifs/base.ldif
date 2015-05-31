@@ -1,5 +1,4 @@
 dn: dc=hortonworks,dc=com
-dc: hortonworks
 objectClass: dcObject
 objectClass: organizationalUnit
 ou: hortonworks.com

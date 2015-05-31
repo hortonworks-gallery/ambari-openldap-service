@@ -9,18 +9,22 @@ class Master(Script):
     self.configure(env)
     import params
 
-    #Ensure the shell scripts in the services dir are executable 
-    Execute('find '+params.stack_dir+' -iname "*.sh" | xargs chmod +x')
+    #e.g. /var/lib/ambari-agent/cache/stacks/HDP/2.2/services/openldap-stack/package
+    service_packagedir = os.path.realpath(__file__).split('/scripts')[0] 
 
-    Execute('echo "Running ' + params.stack_dir + '/package/scripts/setup.sh"')
+    #Ensure the shell scripts in the services dir are executable         
+    Execute('find '+service_packagedir+' -iname "*.sh" | xargs chmod +x')
+
+    Execute('echo "Running ' + service_packagedir + '/scripts/setup.sh"')
     
     # run setup script which has simple shell setup
-    Execute(params.stack_dir + '/package/scripts/setup.sh ' + params.ldap_password + ' ' + params.ldap_adminuser + ' ' + params.ldap_domain + ' ' + params.ldap_ldifdir + ' >> ' + params.stack_log)
+    Execute(service_packagedir + '/scripts/setup.sh ' + params.ldap_password + ' ' + params.ldap_adminuser + ' ' + params.ldap_domain + ' ' + params.ldap_ldifdir + ' ' + params.ldap_ou + ' >> ' + params.stack_log)
 
 
   def configure(self, env):
     import params
     env.set_params(params)
+
 
   def stop(self, env):
     import params

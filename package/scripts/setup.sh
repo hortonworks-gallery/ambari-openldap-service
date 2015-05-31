@@ -13,6 +13,8 @@ LDAP_PASSWORD="$1"
 LDAP_ADMIN_USER="$2"
 LDAP_DOMAIN="$3"
 LDAP_LDIF_DIR="$4"
+LDAP_OU="$5"
+
 echo -e "\n####  Installing OpenLDAP with the following args:
 	password: $LDAP_PASSWORD
 	admin user: $LDAP_ADMIN_USER
@@ -233,7 +235,7 @@ service slapd start
 #
 echo -e "\n####  Set domain in ldif files to $LDAP_DOMAIN"
 sed -i "s/dc=hortonworks,dc=com/$LDAP_DOMAIN/g" $LDAP_LDIF_DIR/*.ldif
-
+sed -i "s/ou: hortonworks.com/ou: $LDAP_OU/g" $LDAP_LDIF_DIR/*.ldif
 
 #
 # Add the base ou's
