@@ -70,7 +70,7 @@ http://sandbox.hortonworks.com/ldapadmin
 
 - To remove the openLDAP service: 
   - Stop the service via Ambari
-  - Delete the service
+  - Unregister the service
   
     ```
 export SERVICE=OPENLDAP
@@ -79,3 +79,7 @@ export AMBARI_HOST=localhost
 export CLUSTER=Sandbox    
 curl -u admin:$PASSWORD -i -H 'X-Requested-By: ambari' -X DELETE http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE
     ```
+   - Clear LDAP dir to reset the data in LDAP
+```
+rm -rf /var/lib/ldap/*
+```   
