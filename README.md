@@ -1,6 +1,10 @@
 #### An Ambari Service for OpenLDAP
 Ambari service for easily installing and managing OpenLDAP on HDP cluster
 
+This can be used in conjunction with [other security related Ambari services](https://github.com/abajwa-hw/ambari-workshops#security-related-sample-services) to setup security on a cluster
+  - [Steps](https://github.com/abajwa-hw/security-workshops/blob/master/Setup-kerberos-Ambari-services.md) on how to use Ambari services to automate the install of OpenLDAP, KDC, nslcd/SSSD on existing cluster, and then running Ambari kerberos wizard
+  - [Steps](https://github.com/abajwa-hw/ambari-workshops/blob/master/blueprints-demo-security.md) on how to use blueprints to deploy a cluster with OpenLDAP, KDC, nslcd/SSSD, and then run Ambari kerberos wizard
+
 Author: [Ali Bajwa](https://www.linkedin.com/in/aliabajwa)
 
 #### Setup
