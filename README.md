@@ -1,4 +1,4 @@
-#### An Ambari Stack for OpenLDAP
+#### An Ambari Service for OpenLDAP
 Ambari service for easily installing and managing OpenLDAP on HDP cluster
 
 Author: [Ali Bajwa](https://www.linkedin.com/in/aliabajwa)
