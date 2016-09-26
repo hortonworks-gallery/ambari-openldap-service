@@ -255,10 +255,10 @@ objectclass:person
 objectclass:organizationalPerson
 objectclass:inetOrgPerson
 objectclass:posixaccount
-cn: admin
-sn: admin
-uid: admin
-homedirectory:/home/admin
+cn: $LDAP_ADMIN_USER
+sn: $LDAP_ADMIN_USER
+uid: $LDAP_ADMIN_USER
+homedirectory:/home/$LDAP_ADMIN_USER
 uidNumber: 75000001
 gidNumber: 75000001
 userPassword: $LDAP_PASSWORD
@@ -275,7 +275,7 @@ ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/
 #
 # Add the groups
 #
-echo -e "\n####  Adding the users"
+echo -e "\n####  Adding the groups"
 ldapadd -D cn=$LDAP_ADMIN_USER,$LDAP_DOMAIN -w $LDAP_PASSWORD -f $LDAP_LDIF_DIR/groups.ldif
 
 
