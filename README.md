@@ -31,11 +31,11 @@ ssh root@sandbox.hortonworks.com
 
 - To download the OpenLDAP service folder, run below
 ```
-cd /var/lib/ambari-server/resources/stacks/HDP/2.2/services
-git clone https://github.com/abajwa-hw/openldap-stack.git   
+VERSION=`hdp-select status hadoop-client | sed 's/hadoop-client - \([0-9]\.[0-9]\).*/\1/'`
+sudo git clone https://github.com/hortonworks-gallery/ambari-openldap-service   /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/OPENLDAP-DEMO 
 ```
 
-- To customize the default users/groups, you can copy the base.ldif/groups.ldif/users.ldif files from ```/var/lib/ambari-server/resources/stacks/HDP/2.2/services/openldap-stack/package/scripts``` dir of ambari server into any dir (e.g. /root) and make your changes (e.g. replace ali user with tom user). In Ambari add services wizard below when you get to configuration page, just point ldap.ldifdir property to this directory. 
+- To customize the default users/groups, you can modify the base.ldif/groups.ldif/users.ldif files under ```/var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/OPENLDAP-DEMO/package/scripts/ldifs``` dir.
 
 - Restart Ambari
 ```
